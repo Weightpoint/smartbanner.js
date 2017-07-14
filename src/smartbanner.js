@@ -178,7 +178,9 @@ export default class SmartBanner {
     }
 
     let bannerDiv = document.createElement('div');
-    document.querySelector('body').appendChild(bannerDiv);
+    let body = document.querySelector('body');
+    body.appendChild(bannerDiv);
+    body.setAttribute("data-smartbanner-active","");
     bannerDiv.outerHTML = this.html;
     if (!this.positioningDisabled) {
       setContentPosition(this.height);
@@ -192,7 +194,9 @@ export default class SmartBanner {
       restoreContentPosition();
     }
     let banner = document.querySelector('.js_smartbanner');
-    document.querySelector('body').removeChild(banner);
+    let body = document.querySelector('body');
+    body.removeChild(banner);
+    body.removeAttribute("data-smartbanner-active");
     Bakery.bake();
   }
 }
